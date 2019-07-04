@@ -8,11 +8,10 @@ test:
       - run: 
           name: test123
           command: gradle test
-      - store_test_results:
-                           path: test-results
-      - store_artifacts:
-                       path: /code/test-results
-                       destination: prefix
+          -store test results:
+  
+                           path: build/test-results
+      
       package:
          docker:
                - image: circleci/openjdk:8-jdk
@@ -21,11 +20,9 @@ test:
            - run: 
                 name: test123
                 command: gradle jar
-      - store_test_results:
-                           path: test-results
-      - store_artifacts:
-                       path: /code/test-results
-                       destination: prefix
+     
+                           path: build/libs
+     
   workflows: 
   version:2
   myworkflow:
