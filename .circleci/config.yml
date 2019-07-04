@@ -9,27 +9,25 @@ test:
           name: test123
           command: gradle test
           -store test results:
-  
-                           path: build/test-results
+                             path: build/test-results
       
       package:
          docker:
                - image: circleci/openjdk:8-jdk
-        steps:
+         steps:
            - checkout
            - run: 
                 name: test123
                 command: gradle jar
-     
-                           path: build/libs
-                           destination:prfix
+                path: build/libs
+                destination: prfix
      
   workflows: 
-  version:2
+  version: 2
   myworkflow:
         jobs:
-       -test
-       -package:
+       - test
+       - package:
                require:
                        -test
       
