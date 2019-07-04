@@ -11,10 +11,10 @@ test:
           -store test results:
                              path: build/test-results
       
-      package:
-         docker:
-               - image: circleci/openjdk:8-jdk
-         steps:
+package:
+    docker:
+      - image: circleci/openjdk:8-jdk
+        steps:
            - checkout
            - run: 
                 name: test123
@@ -22,12 +22,12 @@ test:
                 path: build/libs
                 destination: prfix
      
-  workflows: 
+workflows: 
   version: 2
-  myworkflow:
-        jobs:
-       - test
-       - package:
+  do_workflow:
+        jobs :
+             - test
+             - package:
                require:
                        -test
       
