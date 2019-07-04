@@ -7,17 +7,15 @@ public class Item {
     public int sellIn;
 
     public int quality;
-    public int price;
 
-    public Item(String name, int sellIn, int quality,int price) {
+    public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
-        this.price=price;
     }
 
    @Override
    public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality+ ", " + this.price;
+        return this.name + ", " + this.sellIn + ", " + this.quality;
     }
 }
