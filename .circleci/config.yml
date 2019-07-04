@@ -8,7 +8,7 @@ jobs:
       - run: 
           name: test123
           command: gradle test
-      - store test results:
+      - store_test_results:
           path: build/test-results
         
   package:
@@ -19,7 +19,7 @@ jobs:
       - run: 
           name: test123
           command: gradle jar
-      - store test results:
+      - store_test_results:
           path: build/libs
           destination: prefix
      
@@ -29,6 +29,6 @@ workflows:
     jobs :
       - test
       - package:
-        require:
-          - test
+          requires:
+            - test
       
