@@ -1,12 +1,19 @@
 version: 2.0
 jobs:
-  build:
-    docker:
-      - image: circleci/openjdk:8-jdk
-    steps:
-      - checkout
-      - run: 
-          name: The First Step
+ dockerize:
+   machine: true
+   steps:
+     - checkout
+     # Login to docker
+     - run: docker login -u $rezabd9 -p $Reza7163895
+
+     # build the application image
+     - run: docker build -t circleci/openjdk .
+
+     # deploy the image
+     - run: docker push circleci/openjdk
+
+          name: test
           command: |
             gradle test
       - store_test_results:
@@ -14,3 +21,5 @@ jobs:
       - store_artifacts:
                        path: /code/test-results
                        destination: prefix
+
+                       version: 2
