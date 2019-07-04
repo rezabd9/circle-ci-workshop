@@ -8,8 +8,8 @@ jobs:
       - run: 
           name: test123
           command: gradle test
-          - store test results:
-              path: build/test-results
+      - store test results:
+          path: build/test-results
         
   package:
     docker:
@@ -19,9 +19,9 @@ jobs:
       - run: 
           name: test123
           command: gradle jar
-          - store test results:
-              path: build/libs
-              destination: prfix
+      - store test results:
+          path: build/libs
+          destination: prefix
      
 workflows: 
   version: 2
