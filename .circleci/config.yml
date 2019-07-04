@@ -1,6 +1,6 @@
 version: 2.0
 jobs:
-test:
+  test:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
@@ -8,27 +8,27 @@ test:
       - run: 
           name: test123
           command: gradle test
-          -store test results:
-                             path: build/test-results
-      
-package:
+          - store test results:
+              path: build/test-results
+        
+  package:
     docker:
       - image: circleci/openjdk:8-jdk
-        steps:
-           - checkout
-           - run: 
-                name: test123
-                command: gradle jar
-                -store test results:
-                path: build/libs
-                destination: prfix
+    steps:
+      - checkout
+      - run: 
+          name: test123
+          command: gradle jar
+          - store test results:
+              path: build/libs
+              destination: prfix
      
 workflows: 
   version: 2
   do_workflow:
-        jobs :
-             - test
-             - package:
-               require:
-                       -test
+    jobs :
+      - test
+      - package:
+        require:
+          - test
       
