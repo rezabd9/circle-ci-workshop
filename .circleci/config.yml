@@ -5,8 +5,7 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - gradle test
+      - run: 
           name: The First Step
           command: |
-            echo 'Hello World!'
-            echo 'This is the delivery pipeline'
+            gradle test
